@@ -1,0 +1,762 @@
+// Variables
+$namespace: "mui-" !default;
+$primary-color: #007aff !default;
+$font-weight: 500 !default;
+$font-size-default: 17px !default;
+
+// Mixins
+// Misc
+// --------------------------------------------------
+@mixin hairline($type, $color, $offset) {
+  &:after{
+    position: absolute;
+    left: $offset;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $color;
+    content:'';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+  @if $type == double {
+    &:before{
+      position: absolute;
+      left: $offset;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background-color: $color;
+      content:'';
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+
+// Transforms
+// --------------------------------------------------
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+     -ms-transform: $transform;
+          transform: $transform;
+}
+
+// Clearfix
+// --------------------------------------------------
+@mixin clearfix() {
+  &:before,
+  &:after {
+    display: table; // 2
+    content: " "; // 1
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Global
+// --------------------------------------------------
+*{
+  -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Muiicons
+// --------------------------------------------------
+@font-face {
+  font-family: Muiicons;
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/mui.ttf') format('truetype');
+}
+
+.#{$namespace}icon {
+  display: inline-block;
+  font-family: Muiicons;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  &.#{$namespace}active{
+    color:$primary-color;
+  }
+  &.#{$namespace}right{
+    &:before{
+      float:right;
+      padding-left: 0.2em;
+    }
+  }
+}
+
+// 通讯录
+// 空心部分
+.#{$namespace}icon-contact:before { content: "\e100"; }
+.#{$namespace}icon-person:before { content: "\e101"; }
+.#{$namespace}icon-personadd:before { content: "\e102"; }
+
+// 实心部分
+.#{$namespace}icon-contact-filled:before { content: "\e130"; }
+.#{$namespace}icon-person-filled:before { content: "\e131"; }
+.#{$namespace}icon-personadd-filled:before { content: "\e132"; }
+
+// 通讯功能
+// 空心部分
+.#{$namespace}icon-phone:before { content: "\e200"; }
+.#{$namespace}icon-email:before { content: "\e201"; }
+.#{$namespace}icon-chatbubble:before { content: "\e202"; }
+.#{$namespace}icon-chatboxes:before { content: "\e203"; }
+
+// 实心部分
+.#{$namespace}icon-phone-filled:before { content: "\e230"; }
+.#{$namespace}icon-email-filled:before { content: "\e231"; }
+.#{$namespace}icon-chatbubble-filled:before { content: "\e232"; }
+.#{$namespace}icon-chatboxes-filled:before { content: "\e233"; }
+// 通讯功能补充类
+.#{$namespace}icon-weibo:before { content: "\e260"; }
+.#{$namespace}icon-weixin:before { content: "\e261"; }
+.#{$namespace}icon-pengyouquan:before { content: "\e262"; }
+.#{$namespace}icon-chat:before { content: "\e263"; }
+.#{$namespace}icon-qq:before { content: "\e264"; }
+
+// 设备类
+// 空心部分
+.#{$namespace}icon-videocam:before { content: "\e300"; }
+.#{$namespace}icon-camera:before { content: "\e301"; }
+.#{$namespace}icon-mic:before { content: "\e302"; }
+.#{$namespace}icon-location:before { content: "\e303"; }
+
+// 实心部分
+.#{$namespace}icon-mic-filled:before,.#{$namespace}icon-speech:before { content: "\e332"; }
+.#{$namespace}icon-location-filled:before { content: "\e333"; }
+
+// 设备补充类
+.#{$namespace}icon-micoff:before { content: "\e360"; }
+// .#{$namespace}icon-volumehigh:before { content: "\e361"; }
+// .#{$namespace}icon-volumelow:before { content: "\e362"; }
+.#{$namespace}icon-image:before { content: "\e363"; }
+.#{$namespace}icon-map:before { content: "\e364"; }
+
+// 操作标志类
+// 空心部分
+.#{$namespace}icon-compose:before { content: "\e400"; }
+.#{$namespace}icon-trash:before { content: "\e401"; }
+.#{$namespace}icon-upload:before { content: "\e402"; }
+.#{$namespace}icon-download:before { content: "\e403"; }
+.#{$namespace}icon-close:before { content: "\e404"; }
+.#{$namespace}icon-redo:before { content: "\e405"; }
+.#{$namespace}icon-undo:before { content: "\e406"; }
+.#{$namespace}icon-refresh:before { content: "\e407"; }
+.#{$namespace}icon-star:before { content: "\e408"; }
+.#{$namespace}icon-plus:before { content: "\e409"; }
+.#{$namespace}icon-minus:before { content: "\e410"; }
+.#{$namespace}icon-circle:before,.#{$namespace}icon-checkbox:before { content: "\e411"; }
+
+// 实心部分
+.#{$namespace}icon-close-filled:before,.#{$namespace}icon-clear:before { content: "\e434"; }
+.#{$namespace}icon-refresh-filled:before { content: "\e437"; }
+.#{$namespace}icon-star-filled:before { content: "\e438"; }
+.#{$namespace}icon-plus-filled:before { content: "\e439"; }
+.#{$namespace}icon-minus-filled:before { content: "\e440"; }
+.#{$namespace}icon-circle-filled:before { content: "\e441"; }
+.#{$namespace}icon-checkbox-filled:before { content: "\e442"; }
+
+// 操作标志补充类
+.#{$namespace}icon-closeempty:before { content: "\e460"; }
+.#{$namespace}icon-refreshempty:before { content: "\e461"; }
+.#{$namespace}icon-reload:before { content: "\e462"; }
+.#{$namespace}icon-starhalf:before { content: "\e463"; }
+.#{$namespace}icon-spinner:before { content: "\e464"; }
+.#{$namespace}icon-spinner-cycle:before { content: "\e465"; }
+.#{$namespace}icon-search:before { content: "\e466"; }
+// .#{$namespace}icon-searchstrong:before { content: "\e467"; }
+.#{$namespace}icon-plusempty:before { content: "\e468"; }
+
+.#{$namespace}icon-forward:before { content: "\e470"; }
+.#{$namespace}icon-back:before,.#{$namespace}icon-left-nav:before { content: "\e471"; }
+.#{$namespace}icon-checkmarkempty:before { content: "\e472"; }
+// .#{$namespace}icon-share:before { content: "\e473"; }
+
+// 拟物标志类
+// 空心部分
+.#{$namespace}icon-home:before { content: "\e500"; }
+.#{$namespace}icon-navigate:before { content: "\e501"; }
+.#{$namespace}icon-gear:before { content: "\e502"; }
+.#{$namespace}icon-paperplane:before { content: "\e503"; }
+.#{$namespace}icon-info:before { content: "\e504"; }
+.#{$namespace}icon-help:before { content: "\e505"; }
+.#{$namespace}icon-locked:before { content: "\e506"; }
+.#{$namespace}icon-more:before { content: "\e507"; }
+.#{$namespace}icon-flag:before { content: "\e508"; }
+
+// 实心部分
+.#{$namespace}icon-home-filled:before { content: "\e530"; }
+.#{$namespace}icon-gear-filled:before { content: "\e532"; }
+.#{$namespace}icon-info-filled:before { content: "\e534"; }
+.#{$namespace}icon-help-filled:before { content: "\e535"; }
+.#{$namespace}icon-more-filled:before { content: "\e537"; }
+
+// 拟物标志补充类
+.#{$namespace}icon-settings:before { content: "\e560"; }
+// .#{$namespace}icon-settingsstrong:before { content: "\e561"; }
+.#{$namespace}icon-list:before { content: "\e562"; }
+.#{$namespace}icon-bars:before { content: "\e563"; }
+// .#{$namespace}icon-more-vertical:before { content: "\e564"; }
+.#{$namespace}icon-loop:before { content: "\e565"; }
+// .#{$namespace}icon-loopstrong:before { content: "\e566"; }
+.#{$namespace}icon-paperclip:before { content: "\e567"; }
+.#{$namespace}icon-eye:before { content: "\e568"; }
+
+// 箭头
+.#{$namespace}icon-arrowup:before { content: "\e580"; }
+.#{$namespace}icon-arrowdown:before { content: "\e581"; }
+.#{$namespace}icon-arrowleft:before { content: "\e582"; }
+.#{$namespace}icon-arrowright:before { content: "\e583"; }
+
+.#{$namespace}icon-arrowthinup:before { content: "\e584"; }
+.#{$namespace}icon-arrowthindown:before { content: "\e585"; }
+.#{$namespace}icon-arrowthinleft:before { content: "\e586"; }
+.#{$namespace}icon-arrowthinright:before { content: "\e587"; }
+
+.#{$namespace}icon-pulldown:before { content: "\e588"; }
+
+//
+// Table views
+// --------------------------------------------------
+.#{$namespace}table-view {
+  position: relative;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none; // Remove usual bullet styles from table view
+  background-color: #fff;
+  @include hairline(double, #c8c7cc, 0); // Double grey border.
+  &:before{
+    top:-1px;//cell 高亮时，保证边框仍旧可见
+  }
+}
+
+.#{$namespace}table-view-icon .#{$namespace}table-view-cell{
+  .#{$namespace}navigate-right .#{$namespace}icon{
+    font-size: 20px;
+    margin-left: -5px;
+    margin-right: 5px;
+    margin-top: -1px;
+  }
+  &:after{
+    left:40px;
+  }
+}
+.#{$namespace}table-view-chevron .#{$namespace}table-view-cell{
+  padding-right: 65px;
+  > a:not(.#{$namespace}btn) {
+    margin-right: -65px;
+  }
+}
+.#{$namespace}table-view-radio .#{$namespace}table-view-cell{
+  padding-right: 65px;
+  > a:not(.#{$namespace}btn) {
+    margin-right: -65px;
+  }
+  .#{$namespace}navigate-right:after{
+    right:9px;
+    content: '';
+    color:$primary-color;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  &.#{$namespace}selected .#{$namespace}navigate-right:after{
+    content: '\e472';
+  }
+}
+
+.#{$namespace}table-view-inverted {
+  background: #333;
+  color: #fff;
+  @include hairline(double, #222, 0); // Double grey border.
+  .#{$namespace}table-view-cell{
+    @include hairline(single, #222, 15px); // Single grey border with 15px offset.
+    &.#{$namespace}active {
+            background-color: #242424;
+        }
+    > a:not(.#{$namespace}btn) {
+        &.#{$namespace}active {
+            background-color: #242424;
+        }
+    }
+  }
+}
+// Pad each table view item and add dividers
+.#{$namespace}table-view-cell {
+  position: relative;
+  padding: 11px 15px;
+  overflow: hidden;
+  //background-color: inherit;//应该透明，否则会盖住ul的边框
+  @include hairline(single, #c8c7cc, 15px); // Single grey border with 15px offset.
+  -webkit-touch-callout: none;//禁止长按出现打开菜单；
+  &.#{$namespace}radio input[type=radio],&.#{$namespace}checkbox input[type=checkbox]{
+    top:8px;
+  }
+  &.#{$namespace}radio.#{$namespace}left,&.#{$namespace}checkbox.#{$namespace}left{
+    padding-left: 58px;
+  }
+  &.#{$namespace}active {
+    background-color: #eee;
+  }
+  // Remove the border from the last table view item
+  &:last-child {
+    //background-image: none;
+    &:before,&:after{
+        height:0;
+    }
+  }
+  // If it's a table view of links, make sure the child <a> takes up full table view item tap area (want to avoid selecting child buttons though)
+  > a:not(.#{$namespace}btn) {
+    position: relative;
+    display: block;
+    padding: inherit;
+    margin: -11px -15px; // Make the entire list item tappable.
+    overflow: hidden;
+    color: inherit;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*&:active {
+        background-color: #eee;
+    }*/
+    &.#{$namespace}active {
+        background-color: #eee;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.#{$namespace}table-view-cell {
+  &.#{$namespace}transitioning{
+  >.#{$namespace}slider-handle,>.#{$namespace}slider-left .#{$namespace}btn,>.#{$namespace}slider-right .#{$namespace}btn{
+      -webkit-transition: -webkit-transform 300ms ease;
+      transition: transform 300ms ease;
+      }
+  }
+  &.#{$namespace}active>.#{$namespace}slider-handle{
+      background-color: #eee;
+  }
+  >.#{$namespace}slider-handle{
+      background-color: #fff;
+      position: relative;
+      &.#{$namespace}navigate-right:after,.#{$namespace}navigate-right:after{
+          right: 0;
+      }
+  }
+  >.#{$namespace}slider-handle,>.#{$namespace}slider-left .#{$namespace}btn,>.#{$namespace}slider-right .#{$namespace}btn{
+      -webkit-transition: -webkit-transform 0ms ease;
+      transition: transform 0ms ease;
+      }
+   >.#{$namespace}slider-left,>.#{$namespace}slider-right{
+      position: absolute;
+      top: 0;
+      height: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      >.#{$namespace}btn{
+        padding: 0 30px;
+        color: #fff;
+        border-radius:0;
+        border:0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        position: relative;
+        left: 0;
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 600%;
+            height: 100%;
+            background: inherit;
+            z-index: -1;
+        }
+        &.#{$namespace}icon{
+            font-size: 30px;
+        }
+      }
+   }
+   >.#{$namespace}slider-right{
+    right: 0%;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0ms ease;
+    transition: transform 0ms ease;
+  }
+  >.#{$namespace}slider-left{
+        left: 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: -webkit-transform 0ms ease;
+        transition: transform 0ms ease;
+    > .#{$namespace}btn:after{
+        right: 100%;
+        margin-right: -1px;
+    }
+  }
+}
+
+// Table view dividers
+// --------------------------------------------------
+
+.#{$namespace}table-view-divider {
+  position: relative;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  margin-top: -1px; // Hides the border of the previous list item
+  margin-left: 0;
+  font-weight: $font-weight;
+  color: #999;
+  background-color: #fafafa;
+  @include hairline(double, #c8c7cc, 0);  // Double (top and bottom) grey border with no offset.
+}
+
+
+// Table-views with media (images,avatars, icons)
+// --------------------------------------------------
+
+.#{$namespace}table-view .#{$namespace}media,
+.#{$namespace}table-view .#{$namespace}media-body {
+  overflow: hidden;
+}
+
+.#{$namespace}table-view {
+  .#{$namespace}media-large .#{$namespace}media-object {
+    max-width: 80px;
+    height: 80px;
+    line-height: 80px;
+  }
+  .#{$namespace}media .#{$namespace}subtitle{
+    color: #000;
+  }
+  .#{$namespace}media-object {
+    max-width: 42px;
+    height: 42px;
+    line-height: 42px;
+    &.#{$namespace}pull-left {
+      margin-right: 10px;
+    }
+    &.#{$namespace}pull-right {
+      margin-left: 10px;
+    }
+  }
+  .#{$namespace}table-view-cell.#{$namespace}media-icon{
+   .#{$namespace}media-object {
+      max-width: 29px;
+      height: 29px;
+      line-height: 29px;
+      margin:-4px 0;
+      img{
+        max-width: 29px;
+        height: 29px;
+        line-height: 29px;
+      }
+      &.#{$namespace}pull-left {
+        margin-right: 10px;
+      }
+      .#{$namespace}icon{
+        font-size: 29px;
+      }
+    }
+    .#{$namespace}media-body{
+      @include hairline(single, #c8c7cc, 55px); // single grey border.
+    }
+    &:after{
+      height:0!important;
+    }
+  }
+}
+.#{$namespace}table-view.#{$namespace}unfold{
+  .#{$namespace}table-view-cell.#{$namespace}collapse .#{$namespace}table-view{
+    display: block;
+    &:before,&:after{
+      height:0!important;
+    }
+  }
+  .#{$namespace}table-view-cell.#{$namespace}media-icon.#{$namespace}collapse{
+    .#{$namespace}media-body{
+      @include hairline(single, #c8c7cc, 70px); // single grey border.
+    }
+  }
+}
+
+// Table-views with buttons, badges and switchs
+// --------------------------------------------------
+.#{$namespace}table-view-cell,
+.#{$namespace}table-view-cell > a {
+  > .#{$namespace}btn,
+  > .#{$namespace}badge,
+  > .#{$namespace}switch {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    @include transform(translateY(-50%));
+  }
+
+  // If the cell has a chevron, give some more room.
+  .#{$namespace}navigate-right,
+  .#{$namespace}push-left,
+  .#{$namespace}push-right {
+    > .#{$namespace}btn,
+    > .#{$namespace}badge,
+    > .#{$namespace}switch {
+        right: 35px;
+    }
+  }
+}
+
+// If the table view is the first component, give it extra margin on top.
+.#{$namespace}content > .#{$namespace}table-view:first-child {
+  margin-top: 15px;
+}
+
+//collapse
+.#{$namespace}table-view-cell.#{$namespace}collapse{
+  .#{$namespace}table-view{
+     &:before,&:after{
+      height:0;
+    }
+    .#{$namespace}table-view-cell:last-child:after{
+      height:0;
+    }
+  }
+  //二级列表默认为向下箭头；
+  >.#{$namespace}navigate-right:after, >.#{$namespace}push-right:after {
+    content: '\e581';
+  }
+
+  &.#{$namespace}active{
+    margin-top: -1px;
+    .#{$namespace}table-view,.#{$namespace}collapse-content{
+      display: block;
+    }
+    //二级列表展开后，变为向上箭头；
+    >.#{$namespace}navigate-right:after, >.#{$namespace}push-right:after {
+      content: '\e580';
+    }
+    //二级列表展开后，高亮时宽度100%
+    .#{$namespace}table-view-cell>a:not(.#{$namespace}btn).#{$namespace}active{
+      margin-left: -31px;
+      padding-left: 47px;
+    }
+  }
+  .#{$namespace}collapse-content{
+    display:none;
+    padding: 8px 15px;
+    margin: 11px -15px -11px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: height .35s ease;
+    -o-transition: height .35s ease;
+    transition: height .35s ease;
+    >.#{$namespace}input-group,>.#{$namespace}slider{
+      margin:-8px -15px;
+      width:auto;
+      height:auto;
+    }
+    >.#{$namespace}slider{
+        margin:-8px -16px;
+    }
+  }
+  .#{$namespace}table-view{
+    display: none;
+    margin-bottom: -11px;
+    margin-top: 11px;
+    margin-right: -15px;
+    margin-left:-15px;
+    border: 0;
+    &.#{$namespace}table-view-chevron{
+      margin-right:-65px;
+    }
+    .#{$namespace}table-view-cell{
+      padding-left: 31px;
+      background-position: 31px 100%;
+      @include hairline(single, #c8c7cc, 30px);
+    }
+  }
+}
+
+//grid
+.#{$namespace}table-view.#{$namespace}grid-view{
+  display:block;
+  padding:0 10px 10px 0;
+  width:100%;
+  white-space:normal;
+  font-size:0;
+  .#{$namespace}table-view-cell{
+    font-size: $font-size-default;
+    display: inline-block;
+    padding:10px 0 0 14px;
+    background:none;
+    text-align:center;
+    vertical-align: middle;
+    margin-right:-4px;
+    .#{$namespace}media-object{
+      width:100%;
+      max-width:100%;
+      height: auto;
+    }
+    > a:not(.#{$namespace}btn){
+      margin:-10px 0 0 -14px;
+      &:active,&.#{$namespace}active{
+        background: none;
+      }
+    }
+    .#{$namespace}media-body{
+      display: block;
+      height: 15px;
+      line-height: 15px;
+      color:#333;
+      font-size: 15px;
+      margin-top:8px;
+      width:100%;
+      text-overflow: ellipsis;
+    }
+    &:before,&:after{
+      height:0;
+    }
+  }
+}
+/* grid-9 */
+.#{$namespace}grid-view.#{$namespace}grid-9{
+  background-color: #f2f2f2;
+  padding: 0;
+  margin:0;
+  border-left:1px solid #EEE;
+  border-top:1px solid #EEE;
+  @include clearfix();
+  &:after{
+    position:static;
+  }
+  .#{$namespace}table-view-cell {
+    vertical-align: top;
+    padding:11px 15px;
+    margin:0;
+    border-right: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    &.#{$namespace}active{
+      background-color:#eee;
+    }
+    > a:not(.#{$namespace}btn){
+      padding: 10px 0;
+      margin: 0;
+    }
+  }
+  &:before{
+    height: 0;
+  }
+  .#{$namespace}media {
+    color: #797979;
+    .#{$namespace}icon{
+      font-size: 2.4em;
+      position: relative;
+    }
+  }
+}
+
+/* grid */
+.#{$namespace}row {
+    @include clearfix();
+}
+.#{$namespace}col-xs-1, .#{$namespace}col-sm-1, .#{$namespace}col-xs-2, .#{$namespace}col-sm-2, .#{$namespace}col-xs-3, .#{$namespace}col-sm-3, .#{$namespace}col-xs-4, .#{$namespace}col-sm-4,  .#{$namespace}col-xs-5, .#{$namespace}col-sm-5, .#{$namespace}col-xs-6, .#{$namespace}col-sm-6, .#{$namespace}col-xs-7, .#{$namespace}col-sm-7, .#{$namespace}col-xs-8, .#{$namespace}col-sm-8, .#{$namespace}col-xs-9, .#{$namespace}col-sm-9, .#{$namespace}col-xs-10, .#{$namespace}col-sm-10,  .#{$namespace}col-xs-11, .#{$namespace}col-sm-11, .#{$namespace}col-xs-12, .#{$namespace}col-sm-12 {
+  position: relative;
+  min-height: 1px;
+}
+.#{$namespace}row>[class*="#{$namespace}col-"]{
+  float: left;
+}
+.#{$namespace}col-xs-12 {
+  width: 100%;
+}
+.#{$namespace}col-xs-11 {
+  width: 91.66666667%;
+}
+.#{$namespace}col-xs-10 {
+  width: 83.33333333%;
+}
+.#{$namespace}col-xs-9 {
+  width: 75%;
+}
+.#{$namespace}col-xs-8 {
+  width: 66.66666667%;
+}
+.#{$namespace}col-xs-7 {
+  width: 58.33333333%;
+}
+.#{$namespace}col-xs-6 {
+  width: 50%;
+}
+.#{$namespace}col-xs-5 {
+  width: 41.66666667%;
+}
+.#{$namespace}col-xs-4 {
+  width: 33.33333333%;
+}
+.#{$namespace}col-xs-3 {
+  width: 25%;
+}
+.#{$namespace}col-xs-0 {
+  width: 20%;
+}
+.#{$namespace}col-xs-2 {
+  width: 16.66666667%;
+}
+.#{$namespace}col-xs-1 {
+  width: 8.33333333%;
+}
+@media (min-width: 400px) {
+  .#{$namespace}col-sm-12 {
+    width: 100%;
+  }
+  .#{$namespace}col-sm-11 {
+    width: 91.66666667%;
+  }
+  .#{$namespace}col-sm-10 {
+    width: 83.33333333%;
+  }
+  .#{$namespace}col-sm-9 {
+    width: 75%;
+  }
+  .#{$namespace}col-sm-8 {
+    width: 66.66666667%;
+  }
+  .#{$namespace}col-sm-7 {
+    width: 58.33333333%;
+  }
+  .#{$namespace}col-sm-6 {
+    width: 50%;
+  }
+  .#{$namespace}col-sm-5 {
+    width: 41.66666667%;
+  }
+  .#{$namespace}col-sm-4 {
+    width: 33.33333333%;
+  }
+  .#{$namespace}col-sm-3 {
+    width: 25%;
+  }
+  .#{$namespace}col-sm-0 {
+    width: 20%;
+  }
+  .#{$namespace}col-sm-2 {
+    width: 16.66666667%;
+  }
+  .#{$namespace}col-sm-1 {
+    width: 8.33333333%;
+  }
+}
